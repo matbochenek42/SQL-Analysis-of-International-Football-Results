@@ -12,7 +12,7 @@
 ## 🔎 Project Overview
 
 <p style="text-align:justify;">
-    The goal of this project is to analyze international football data from 1872 to 2025 using PostgreSQL. Analysis itself is divided into three separate SQL files (plus an additional one that establishes the database), followed later by Excel files that contain charts which visually represent SQL outputs. The project takes a closer look at players stats, country comparisons and other!
+    The goal of this project is to analyze international football data from 1872 to 2025 using PostgreSQL. Analysis itself is divided into three separate SQL files (plus an additional one that establishes the database), followed later by Excel files that contain charts which visually represent SQL outputs. The project takes a closer look at players stats, country comparisons and other.
 </p>
 
 ## 📂 Data Overview
@@ -43,7 +43,7 @@ The dataset consists of **four CSV files**:
 1. Install PostgreSQL locally 
 2. Download the entire folder
 3. Run SQL scripts starting with file ***0. create.sql***
-4. Update all directory paths (red rectangles in the screen below) in [0. create.sql](sql%20queries/0.%20create.sql) file❗
+4. Update all directory paths (red rectangles in the screen below) in [0. create.sql](sql%20queries/0.%20create.sql) file
 
 ![Update this](visualization/images/copy_example.png)
 
@@ -88,7 +88,7 @@ Query: [3.1 The most popular places where home or away country didn't participat
 **Insights:**
 
 <p style="text-align:justify;">
-    The query shows what are the most famous third-countries match locations (host countries that didn't participate in the game). The most popular country is the USA with 997 games, then Malaysia with 508 games and France with 442 games. Other popular places are: Latin America, Middle East, West Africa. Interestingly, Western Europe is way behind those locations. 
+    The query shows what are the most famous third-countries match locations (host countries that didn't participate in the game). The most popular country is the USA with 997 games, then Malaysia with 508 games and France with 442 games. Other popular places are: Latin America, Middle East, West Africa. It is worth to notice that Western Europe is way behind those locations. 
 </p>
 
 ## 🖥️ Technical Details
