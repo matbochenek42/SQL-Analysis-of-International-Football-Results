@@ -45,8 +45,6 @@ The dataset consists of **four CSV files**:
 3. Run SQL scripts starting with file ***0. create.sql***
 4. Update all directory paths (red rectangles in the screen below) in [0. create.sql](sql%20queries/0.%20create.sql) file
 
-![Update this](visualization/images/copy_example.png)
-
 ## 📈 Sample Queries
 
 ### The best scorers every decade
