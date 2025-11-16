@@ -43,7 +43,7 @@ The dataset consists of **four CSV files**:
 1. Install PostgreSQL locally 
 2. Download the entire folder
 3. Run SQL scripts starting with file ***0. create.sql***
-4. Update all directory paths (red rectangles in the screen below) in [0. create.sql](sql%20queries/0.%20create.sql) file
+4. Update all directory paths in [0. create.sql](sql%20queries/0.%20create.sql) file
 
 ## 📈 Sample Queries
 
