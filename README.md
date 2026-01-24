@@ -91,7 +91,7 @@ Query: [3.1 The most popular places where home or away country didn't participat
 
 ## 🖥️ Technical Details
 
-- **Database:** PostgreSQL
+- **DBMS:** PostgreSQL
 - **Environment:** Visual Studio Code
 - **Visualization:** Excel Charts
 - **Data source:** [Kaggle International Football Results Dataset](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017) 
