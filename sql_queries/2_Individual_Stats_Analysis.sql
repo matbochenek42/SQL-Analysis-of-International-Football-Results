@@ -1,7 +1,7 @@
 
---1.1 Top 10 scorers of all time 
+-- 1. Top 10 scorers of all time 
 
-WITH scorers AS -- top scorers queary
+WITH scorers AS -- top scorers 
 (
     SELECT
         scorer,
@@ -14,7 +14,7 @@ WITH scorers AS -- top scorers queary
         scorer
 )
 SELECT
-    ROW_NUMBER() OVER(ORDER BY goals_scored DESC) number, -- row_number added 
+    ROW_NUMBER() OVER(ORDER BY goals_scored DESC) number, -- row number 
     *
 FROM
     scorers
@@ -23,10 +23,10 @@ ORDER BY
 LIMIT 10;
 
 
---1.2 Top 10 Polish scorers
+--2. Top 10 Polish scorers
 
 SELECT --adding row number
-    ROW_NUMBER() OVER() nr,
+    ROW_NUMBER() OVER(ORDER BY goals_scored DESC) AS nr,
     * 
 FROM
 (
@@ -39,21 +39,20 @@ FROM
         scorer IS NOT NULL AND team = 'Poland'
     GROUP BY
         scorer
+
 )
-ORDER BY
-    goals_scored DESC
 LIMIT 10;
 
 
---1.3 Top scorers in every decade     
+-- 3. Top scorers in every decade     
 
-WITH decades AS --stats (year, scorer's name, country, and num of goals)
+WITH decades AS -- stats (year, scorer's name, country, and num of goals)
 (
     SELECT
         (EXTRACT(YEAR FROM date)::INT / 10) * 10 decade,
         scorer,
         team,
-        COUNT(*) num_of_goals
+        COUNT(*) AS num_of_goals
     FROM
         goalscorers
     WHERE
@@ -64,7 +63,7 @@ WITH decades AS --stats (year, scorer's name, country, and num of goals)
         scorer
 ), add_t AS
 (
-    SELECT --max goals for every decade
+    SELECT -- max goals for every decade
         decade,
         MAX(num_of_goals) AS most_goals
     FROM
@@ -80,22 +79,22 @@ SELECT
 FROM
     add_t
 JOIN
-    decades d ON add_t.decade = d.decade AND d.num_of_goals = add_t.most_goals --joinig ctes
+    decades d ON add_t.decade = d.decade AND d.num_of_goals = add_t.most_goals -- joinig CTEs
 ORDER BY
     1;
 
 
---1.4 Top scorers that change the final result of the game in the key moment 
+-- 4. Top scorers that change the final result of the game in the key moment 
 
 SELECT
-    ROW_NUMBER() OVER(ORDER BY sum_of_goals DESC),
+    ROW_NUMBER() OVER(ORDER BY number_of_goals DESC) AS number,
     *
 FROM
 (
     SELECT
         g.team,
         g.scorer,
-        COUNT(*) AS sum_of_goals
+        COUNT(*) AS number_of_goals
     FROM
         goalscorers g
     JOIN
@@ -107,7 +106,7 @@ FROM
         g.scorer
 )
 ORDER BY
-    sum_of_goals DESC
+    number_of_goals DESC
 LIMIT 10;
 
 

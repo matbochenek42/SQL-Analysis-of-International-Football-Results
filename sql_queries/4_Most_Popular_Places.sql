@@ -1,8 +1,8 @@
---3.1 The most popular places where home or away country didn't participate in the game
+-- 1. The most popular places where home or away country didn't participate in the game
 
 SELECT
     country,
-    COUNT(*) num_of_games
+    COUNT(*) AS num_of_games
 FROM
     results
 WHERE

@@ -1,9 +1,9 @@
---DROP DATABASE IF EXISTS football_database;
+-- DROP DATABASE IF EXISTS football_database;
 
 CREATE DATABASE football_database;
 
 
-CREATE TABLE former_names --zmiana nazw państw
+CREATE TABLE former_names -- dane o nieistniejących już państwach
 (
     current VARCHAR(100),
     former VARCHAR(100),
@@ -17,7 +17,7 @@ COPY former_names FROM '...\International football results from 1872 to 2025\dat
 
 
 
-CREATE TABLE goalscorers --dane zawierające informacje o strzelcach
+CREATE TABLE goalscorers -- dane o strzelcach
 (
     date DATE,
     home_team VARCHAR(100),
@@ -34,7 +34,7 @@ ALTER TABLE public.goalscorers OWNER to postgres;
 COPY goalscorers FROM '...\International football results from 1872 to 2025\data\goalscorers.csv' DELIMITER ',' CSV HEADER NULL 'NA';
 
 
-CREATE TABLE results -- wyniki meczów
+CREATE TABLE results -- dane o wynikach meczów
 (
     date DATE,
     home_team VARCHAR(100),
@@ -52,7 +52,7 @@ ALTER TABLE public.results OWNER to postgres;
 COPY results FROM '...\International football results from 1872 to 2025\data\results.csv' DELIMITER ',' CSV HEADER;
 
 
-CREATE TABLE shootouts -- karne 
+CREATE TABLE shootouts -- dane o karnych 
 (
     date DATE,
     home_team VARCHAR(100),
@@ -69,7 +69,7 @@ COPY shootouts FROM '...\International football results from 1872 to 2025\data\s
 
 SELECT * FROM goalscorers LIMIT 10;
 
-SELECT * FROM former_names;
+SELECT * FROM former_names LIMIT 10;
 
 SELECT * FROM results LIMIT 10;
 

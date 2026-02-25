@@ -1,6 +1,7 @@
 
---2.1 Sum of goals scored grouped by a decade (since 70's) and the difference between current row and previous decade
-WITH year_extracted AS --decades extracted
+-- 1. Sum of goals scored grouped by a decade (since 70's) and the difference between current row and previous decade
+
+WITH year_extracted AS -- decades extracted
 (
     SELECT 
         home_team,
@@ -17,7 +18,7 @@ WITH year_extracted AS --decades extracted
     FROM
         results
 ), 
-final_result AS --goals by a decade
+final_result AS -- goals by a decade
 (
     SELECT DISTINCT
         ye.decade,
@@ -31,9 +32,9 @@ final_result AS --goals by a decade
     GROUP BY
         ye.decade
 )
-SELECT --final query
+SELECT -- final query
     *,
-    LAG(goals) OVER(ORDER BY decade) previous_decade_value,
+    LAG(goals) OVER(ORDER BY decade) previous_decade_goals,
     100* (goals - LAG(goals) OVER(ORDER BY decade)) / LAG(goals) OVER(ORDER BY decade) previous_decade_diff
 FROM 
     final_result f
@@ -41,10 +42,9 @@ ORDER BY
     f. decade;
 
 
+-- 2. Top 10 nations with the most wins against Poland
 
---2.2.1 Top 10 nations with the most wins against Poland
-
-WITH nation AS --won matches against Poland
+WITH nation AS -- won matches against Poland
 (
     SELECT
         CASE 
@@ -61,7 +61,7 @@ WITH nation AS --won matches against Poland
 )
 SELECT
     nation_name,
-    COUNT(CASE WHEN defeats = 1 THEN 1 END) number_of_wins_against_pl
+    COUNT(CASE WHEN defeats = 1 THEN 1 END) AS number_of_wins_against_pl
 FROM
     nation
 WHERE
@@ -72,7 +72,7 @@ ORDER BY
     number_of_wins_against_pl DESC
 LIMIT 10;
 
---2.2.2 Top 10 countries Poland has won against the most
+-- 3. Top 10 countries Poland has won against the most
 
 WITH nation AS
 (
@@ -103,7 +103,7 @@ ORDER BY
 LIMIT 10;
 
 
---2.2.3 Top 10 countries Poland has drawn with the most 
+-- 4. Top 10 countries Poland has drawn with the most 
 
 WITH nation AS
 (
@@ -129,7 +129,7 @@ ORDER BY
 LIMIT 10;
 
 
---2.3 Top 20 countries that have the highest average of away goals in the last 10 years (only teams with more than 30 games played)
+-- 5. Top 20 countries that have the highest average of away goals in the last 10 years (only teams with more than 30 games played)
 
 SELECT
     r.away_team away_team,
@@ -148,11 +148,11 @@ LIMIT 15;
 
 
 
---2.4 Comparison between Brazil and Argentina (results and goals)
+-- 4. Comparison between Brazil and Argentina (results and goals)
 
-WITH match AS --all matches between Brazil and Argentina 
+WITH match AS -- all matches between Brazil and Argentina 
 (
-    SELECT --matches and scores between Br and Arg 
+    SELECT -- matches and scores between Br and Arg 
         home_team, 
         away_team,
         home_score,
@@ -163,7 +163,7 @@ WITH match AS --all matches between Brazil and Argentina
         (home_team = 'Argentina' AND away_team = 'Brazil')
         OR (home_team = 'Brazil' AND away_team = 'Argentina')
 ),
-team AS --home_team results and goals scored during the match
+team AS -- home_team results and goals scored during the match
 (
     SELECT --
         home_team country,
@@ -178,7 +178,7 @@ team AS --home_team results and goals scored during the match
 
     UNION ALL
 
-    SELECT --away_team results and goals scored during the match
+    SELECT -- away_team results and goals scored during the match
         away_team country,
         CASE 
             WHEN away_score > home_score THEN 'win'
@@ -201,7 +201,7 @@ GROUP BY
     country;
 
 
---2.5 Countries ordered by an elo system (win = 3 points, lose = 0, draw = 1)
+-- 5. Countries ordered by an elo system (win = 3 points, lose = 0, draw = 1)
 
 WITH match AS 
 (
@@ -257,7 +257,7 @@ ORDER BY
 LIMIT 100;
 
 
---2.6 Average countries elo points change over the months of 2014
+-- 6. Average countries elo points change over the months of 2014
 
 WITH match AS 
 (
