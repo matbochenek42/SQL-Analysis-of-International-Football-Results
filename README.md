@@ -6,6 +6,7 @@
 - **Structure Explanation**
 - **How to Run**
 - **Sample Queries**
+- **Skills Used**
 - **Technical Details**
 - **Author**
 
@@ -54,9 +55,7 @@ Query: [Top scorers in every decade](sql_queries/2_Individual_Stats_Analysis.sql
 
 **Insights:**
 
-<p style="text-align:justify;">
-    It appears that players tend to score more and more goals with each passing decade. The best national scorer is Ronaldo (2010s). The best scorer in current decade is Harry Kane, who has scored almost half as many goals as Ronaldo. However, the decade isn't over yet!
-</p>
+It appears that players tend to score more and more goals with eachpassing decade. The best national scorer is Ronaldo (2010s). The bestscorer in current decade is Harry Kane, who has scored almost half asmany goals as Ronaldo. However, the decade isn't over yet!
 
 ### Argentina vs Brazil
 
@@ -68,9 +67,9 @@ Query: [Comparison between Brazil and Argentina (results and goals)](sql_queries
 
 **Insights:**
 
-<p style="text-align:justify;">
-    The query compares direct results for Argentina and Brazil - one of the most famous and oldest national rivalries. According to results, Brazil has won 2 more games against Argentina and scored two goals more. This emphasizes how close and competitive the rivalry has been.
-</p>
+
+The query compares direct results for Argentina and Brazil - one of themost famous and oldest national rivalries. According to results, Brazilhas won 2 more games against Argentina and scored two goals more. Thisemphasizes how close and competitive the rivalry has been.
+
 
 ### Most Popular Third-Country Match Locations
 
@@ -82,9 +81,19 @@ Query: [3.1 The most popular places where home or away country didn't participat
 
 **Insights:**
 
-
 The query shows what are the most famous third-countries match locations(host countries that didn't participate in the game). The most popularcountry is the USA with 997 games, then Malaysia with 508 games andFrance with 442 games. Other popular places are: Latin America, MiddleEast, West Africa. It is worth to notice that Western Europe is waybehind those locations. 
 
+## 💪 Skills Used
+
+### 🛢️ SQL Skills
+- Creating a database and tables in *PostgreSQL* from scratch
+- Common Table Expressions (CTEs)
+- Joins
+- Aggregation
+- CASE Statement
+- Date function
+- Window functions
+- Union
 
 ## 🖥️ Technical Details
 
